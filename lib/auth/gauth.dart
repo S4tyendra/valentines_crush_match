@@ -21,7 +21,7 @@ class GAuth {
         await _auth.currentUser?.delete();
         await GAuth().signOut();
         throw FirebaseAuthException(
-          code: 'ERROR_INVALID_EMAIL_DOMAIN',
+          code: 'ERROR_INVALID_EMAIL',
           message: 'Only @iiitkota.ac.in emails are allowed',
         );
       }
@@ -37,4 +37,6 @@ class GAuth {
     await _auth.signOut();
     await _googleSignIn.signOut();
   }
+
+  User? get currentUser => _auth.currentUser;
 }
